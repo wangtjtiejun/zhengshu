@@ -43,7 +43,8 @@ class MailService
         QALog::info('邮件发送', [$data], self::LOG_FILE);
         try {
             Mail::send([$format => $data['body']], $data['data'], function (Message $message) use ($subject, $to, $attachments) {
-                $message->to(array_unique(array_merge((array)$to, config('crm.mail_list.crm_engineer'))))
+//                array_unique(array_merge((array)$to, config('crm.mail_list.crm_engineer')))
+                $message->to($to)
                     ->subject($subject);
                 if ($attachments) {
                     foreach ($attachments as $attachment) {
