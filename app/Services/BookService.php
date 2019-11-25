@@ -147,7 +147,7 @@ class BookService
             'id'        => $result->id,
             'name'  => $result->name,
             'sex'     => $result->sex,
-            'birthday'     => $result->birthday?date("Y年m月d日",strtotime($result->birthday)):'',
+            'birthday'     => $result->birthday?date("Y 年 m 月 d 日",strtotime($result->birthday)):'',
             'card_number'    => $result->card_number,
             'id_card'   => $result->id_card,
             'card_number'  => $result->card_number,

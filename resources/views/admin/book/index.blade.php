@@ -41,11 +41,14 @@
             <thead>
             <tr class="text-c">
                 <th width="25"><input type="checkbox" name="" value=""></th>
-                <th width="150">姓名</th>
-                <th width="150">性别</th>
-                <th width="150">证书编号</th>
-                <th width="130">颁证日期</th>
-                <th width="100">预览</th>
+                <th width="50">姓名</th>
+                <th width="50">性别</th>
+                <th width="100">证书编号</th>
+                <th width="120">职业（工种）及等级</th>
+                <th width="100">理论知识考试成绩</th>
+                <th width="100">操作技能考核成绩</th>
+                <th width="100">评定成绩</th>
+                <th width="100">颁证日期</th>
                 <th width="100">操作</th>
             </tr>
             </thead>
@@ -56,13 +59,15 @@
                     <td>{{$row->name}}</td>
                     <td>{{$row->sex}}</td>
                     <td>{{$row->card_number}}</td>
+                    <td>{{$row->grade_work}}</td>
+                    <td>{{$row->llzs_score}}</td>
+                    <td>{{$row->czjn_score}}</td>
+                    <td>{{$row->results}}</td>
                     <td>{{$row->card_date}}</td>
-                    <td class="td-status">
+                    <td class="td-manage">
                         <a title="预览" href="javascript:;" onclick="book_show('预览','{{route('book.show',['book_id' => $row->id])}}','800','500')" class="ml-5" style="text-decoration:none">
                             <span class="label label-success radius"> 预览 </span>
                         </a>
-                    </td>
-                    <td class="td-manage">
                         <a title="编辑" href="javascript:;" onclick="admin_edit('证书编辑','{{route('book.edit',['book_id' => $row->id])}}','800','500')" class="ml-5" style="text-decoration:none">
                             <i class="Hui-iconfont">&#xe6df;</i>
                         </a>

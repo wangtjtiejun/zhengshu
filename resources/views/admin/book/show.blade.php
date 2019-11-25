@@ -3,7 +3,7 @@
 @section('content')
     <style type="text/css">
         body{
-            background-color: rgba(135,206,255,0.5);
+            background-color: rgba(135,206,255,0.2);
         }
         .page-container {
             padding-left: 14px;
@@ -12,20 +12,26 @@
         .show_left {
             text-align: right !important;
             font-size: 10px;
-            font-weight:bold;
             width: 44%;
         }
         .show_right {
             font-size: 10px;
-            font-weight:bold;
+            /*font-weight:bold;*/
             width: 56%;
         }
         table {
             background-color: #fff;
+            border-spacing: 2px;
         }
         .table th, .table td {
             padding: 3px;
             line-height: 20px;
+        }
+        .table-bordered td {
+            border: 1px solid #ddd;
+        }
+        .page-container {
+            padding: 10px;
         }
     </style>
     <article class="page-container">
@@ -77,7 +83,7 @@
                 </tr>
                 <tr>
                     <td class="show_left">证书流水码所属号段：</td>
-                    <td class="show_right">{{$result["paragraph_number"]}}</td>
+                    <td class="show_right" style="font-size: 8px;font-weight:bold;">{{$result["paragraph_number"]}}</td>
                 </tr>
             </tbody>
         </table>
