@@ -41,7 +41,7 @@ class MailService
         $hostName = gethostname();
         $subject .= '(服务器名称:' . $hostName . ')';
         QALog::info('邮件发送', [$data], self::LOG_FILE);
-        try {
+//        try {
             Mail::send([$format => $data['body']], $data['data'], function (Message $message) use ($subject, $to, $attachments) {
 //                array_unique(array_merge((array)$to, config('crm.mail_list.crm_engineer')))
                 $message->to($to)
@@ -55,10 +55,10 @@ class MailService
             if (Mail::failures()) {
                 throw new Exception('下列地址发送失败：' . json_encode(Mail::failures()));
             }
-        } catch (Exception $e) {
-            QALog::error('邮件发送失败', ['message' => $e->getMessage()], self::LOG_FILE);
-        }
-        return true;
+//        } catch (Exception $e) {
+//            QALog::error('邮件发送失败', ['message' => $e->getMessage()], self::LOG_FILE);
+//        }
+//        return true;
     }
 
 }
