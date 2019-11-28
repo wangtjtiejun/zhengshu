@@ -110,7 +110,7 @@ class BookController extends BaseController
         }
         $result = $this->bookService->getBookById($bookId);
         $data = compact('result');
-        return view('admin.book.show',$data);
+        return view('index.show',$data);
     }
 
     /**

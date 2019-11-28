@@ -1,0 +1,22 @@
+
+
+#status {
+
+color:black;
+float:right;
+font:16px Arial, Helvetica, sans-serif;
+left:45%;
+letter-spacing:2px;
+padding:6px 12px;
+position:fixed;
+text-align:center;
+top:30%;
+z-index:999;
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop));
+_margin-top:20%;
+
+}
+
+

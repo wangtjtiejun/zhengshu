@@ -1,0 +1,30 @@
+﻿body{
+    /*margin:0px;
+    padding:0px;*/
+    background-color:lightgray;
+}
+.pageArea,.pageArea2{
+    position:relative;
+    width:718px;
+    height:510px;
+    border:1px solid gray;
+    margin:5px auto;
+    z-index:-2;
+}
+
+.pageArea2{
+    z-index:-2;
+}
+
+.data{
+	position:absolute;
+	font-family: "仿宋";
+	font-size: 12pt;
+	color: #000000;
+        z-index:100;
+}
+
+.img{
+	position:absolute;
+	z-index:-1;
+}
