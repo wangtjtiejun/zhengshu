@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/c_code', 'IndexController@index')->name('index');
+Route::get('/', 'IndexController@index')->name('index');
 Route::get('/code', 'IndexController@code')->name('code');
 Route::get('/show', 'IndexController@show')->name('show');
 Route::post('/check', 'IndexController@check')->name('check');
