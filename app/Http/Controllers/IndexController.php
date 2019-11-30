@@ -43,11 +43,11 @@ class IndexController extends BaseController
 
     public function check(Request $request)
     {
-        $card_number = $request->input('cardno', 0);
-        if ($card_number == 0) {
+        $id_card = $request->input('cardno', 0);
+        if ($id_card == 0) {
             return $this->error('service_error', "请输入正确证件号码");
         }
-        $result = $this->bookService->checkByCardNumber($card_number);
+        $result = $this->bookService->checkByCardNumber($id_card);
         if (!empty($result)) {
             return $this->success($result);
         } else {
@@ -60,8 +60,8 @@ class IndexController extends BaseController
         if (!$request->session()->get("code")) {
             return view('index.error');
         }
-        $card_number = $request->input('cardno', 0);
-        $result = $this->bookService->getBookByCardNumber($card_number);
+        $id_card = $request->input('cardno', 0);
+        $result = $this->bookService->getBookByCardNumber($id_card);
         $title = '证书信息';
         $data = compact('result', 'title');
         return view('index.show',$data);

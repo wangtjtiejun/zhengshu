@@ -71,9 +71,9 @@ class BookController extends BaseController
     {
         $requestData = $request->all();
         try {
-            $card_number = $this->bookService->getBookByCardNumber($requestData["card_number"]);
+            $card_number = $this->bookService->getBookByCardNumber($requestData["id_card"]);
             if (!empty($card_number)) {
-                return $this->error('service_error', '该证书编号已存在！');
+                return $this->error('service_error', '该身份证号已存在！');
             }
             $this->bookService->addBook($requestData);
             return $this->success();
@@ -129,9 +129,9 @@ class BookController extends BaseController
         $requestData = $request->all();
         try {
             $updateData = $requestData;
-            $card_number = $this->bookService->getBookByCardNumber($requestData["card_number"], $requestData['book_id']);
+            $card_number = $this->bookService->getBookByCardNumber($requestData["id_card"], $requestData['book_id']);
             if (!empty($card_number)) {
-                return $this->error('service_error', '该证书编号已存在！');
+                return $this->error('service_error', '该身份证号已存在！');
             }
             unset($updateData['book_id'], $updateData['_token']);
             $this->bookService->updateBookById($updateData, $requestData['book_id']);

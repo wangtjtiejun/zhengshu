@@ -18,7 +18,7 @@
                 </p>
                 <p style="display: inline-block" class="search_p">
                     <span></span>
-                    <input type="number" class="input-text radius" value="{{$requestData['card_number'] ?? ''}}" style="width:200px" placeholder="输入证书编号" id="" name="card_number" >
+                    <input type="text" class="input-text radius" value="{{$requestData['id_card'] ?? ''}}" style="width:200px" placeholder="输入身份证号" id="" name="id_card" >
                 </p>
                 <button type="submit" class="btn btn-success radius"><i class="Hui-iconfont">&#xe665;</i> 查询
                 </button>
@@ -44,6 +44,7 @@
                 <th width="50">姓名</th>
                 <th width="50">性别</th>
                 <th width="100">证书编号</th>
+                <th width="100">身份证号</th>
                 <th width="120">职业（工种）及等级</th>
                 <th width="100">理论知识考试成绩</th>
                 <th width="100">操作技能考核成绩</th>
@@ -59,6 +60,7 @@
                     <td>{{$row->name}}</td>
                     <td>{{$row->sex}}</td>
                     <td>{{$row->card_number}}</td>
+                    <td>{{$row->id_card}}</td>
                     <td>{{$row->grade_work}}</td>
                     <td>{{$row->llzs_score}}</td>
                     <td>{{$row->czjn_score}}</td>

@@ -169,8 +169,8 @@
           $("#checkbox-lang").html(data.error.message);
           $(".dialog-sure").val("确认");
         } else {
-          var card_number = data.data.card_number
-          location.href = "/show?cardno=" + card_number
+          var id_card = data.data.id_card
+          location.href = "/show?cardno=" + id_card
         }
       }
     })

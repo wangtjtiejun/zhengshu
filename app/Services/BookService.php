@@ -28,8 +28,8 @@ class BookService
         if (!empty($data['name'])) {
             $result->where('name', 'like', $data['name'] . '%');
         }
-        if (!empty($data['card_number'])) {
-            $result->where('card_number', 'like', $data['card_number'] . '%');
+        if (!empty($data['id_card'])) {
+            $result->where('id_card', 'like', $data['id_card'] . '%');
         }
         $result->orderBy('created_at','desc');
         if(!empty($data['is_admin'])){
@@ -109,15 +109,15 @@ class BookService
 
     /**
      * checkByCardNumber
-     * @param int $cardNumber
+     * @param int $idCard
      * @return array
      * @user tiejun
      * @time 2019/11/24 下午3:22
      */
-    public function checkByCardNumber(int $cardNumber,int $bookId = 0): array
+    public function checkByCardNumber(int $idCard,int $bookId = 0): array
     {
         $query = CrmBookModel::query();
-        $query->where('card_number', '=', $cardNumber);
+        $query->where('id_card', '=', $idCard);
         if ($bookId != '') {
             $query->where('id', '<>', $bookId);
         }
@@ -127,22 +127,22 @@ class BookService
             return [];
         }
         $detail = [
-            'card_number'    => $result->card_number
+            'id_card'    => $result->id_card
         ];
         return $detail;
     }
 
     /**
      * getBookByCardNumber
-     * @param int $cardNumber
+     * @param int $idCard
      * @return array
      * @user tiejun
      * @time 2019/11/24 下午3:22
      */
-    public function getBookByCardNumber(int $cardNumber): array
+    public function getBookByCardNumber(int $idCard): array
     {
         $result = CrmBookModel::query()
-            ->where('card_number', '=', $cardNumber)
+            ->where('id_card', '=', $idCard)
             ->first();
         if (empty($result)) {
             return [];
