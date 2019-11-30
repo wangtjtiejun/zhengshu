@@ -71,6 +71,10 @@ class BookController extends BaseController
     {
         $requestData = $request->all();
         try {
+            $card_number = $this->bookService->getBookByCardNumber($requestData["card_number"]);
+            if (!empty($card_number)) {
+                return $this->error('service_error', '该证书号已存在！');
+            }
             $this->bookService->addBook($requestData);
             return $this->success();
         } catch (\Exception $e) {
