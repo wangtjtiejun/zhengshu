@@ -114,11 +114,15 @@ class BookService
      * @user tiejun
      * @time 2019/11/24 下午3:22
      */
-    public function checkByCardNumber(int $cardNumber): array
+    public function checkByCardNumber(int $cardNumber,int $bookId = 0): array
     {
-        $result = CrmBookModel::query()
-            ->where('card_number', '=', $cardNumber)
-            ->first();
+        $query = CrmBookModel::query();
+        $query->where('card_number', '=', $cardNumber);
+        if ($bookId != '') {
+            $query->where('id', '<>', $bookId);
+        }
+
+        $result = $query->first();
         if (empty($result)) {
             return [];
         }

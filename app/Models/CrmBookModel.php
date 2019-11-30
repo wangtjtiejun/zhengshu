@@ -8,14 +8,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 
 class CrmBookModel extends BaseModel
 {
     use Notifiable;
-
-    use SoftDeletes;
 
     protected $rememberTokenName = '';
 
