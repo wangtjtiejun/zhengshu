@@ -22,17 +22,17 @@ class BookService
      */
     public function getBookList(array $data)
     {
-        $page          = $data['page'] ?? 1;
-        $pageCount     = $data['pageCount'] ?? config('crm.pageCount');
-        $result        = CrmBookModel::query();
+        $page = $data['page'] ?? 1;
+        $pageCount = $data['pageCount'] ?? config('crm.pageCount');
+        $result = CrmBookModel::query();
         if (!empty($data['name'])) {
             $result->where('name', 'like', $data['name'] . '%');
         }
         if (!empty($data['id_card'])) {
             $result->where('id_card', 'like', $data['id_card'] . '%');
         }
-        $result->orderBy('created_at','desc');
-        if(!empty($data['is_admin'])){
+        $result->orderBy('created_at', 'desc');
+        if (!empty($data['is_admin'])) {
             $result = $result->paginate($pageCount);
             return $result;
         }
@@ -55,11 +55,10 @@ class BookService
     {
         $addData = [
             'name' => $data['name'] ?? '',
-            'sex'    => $data['sex'] ?? '',
-            'birthday'    => $data['birthday'] ?? '',
+            'sex' => $data['sex'] ?? '',
+            'birthday' => $data['birthday'] ?? '',
             'card_number' => $data['card_number'] ?? '',
             'id_card' => $data['id_card'] ?? '',
-            'card_number' => $data['card_number'] ?? '',
             'grade_work' => $data['grade_work'] ?? '',
             'llzs_score' => $data['llzs_score'] ?? '',
             'czjn_score' => $data['czjn_score'] ?? '',
@@ -67,7 +66,7 @@ class BookService
             'card_date' => $data['card_date'] ?? '',
             'company' => $data['company'] ?? '',
             'paragraph_number' => $data['paragraph_number'] ?? '',
-            'status'   => 1
+            'status' => 1
         ];
 
         return CrmBookModel::query()->create($addData);
@@ -89,20 +88,19 @@ class BookService
             return [];
         }
         $detail = [
-            'id'        => $result->id,
-            'name'  => $result->name,
-            'sex'     => $result->sex,
-            'birthday'     => $result->birthday,
-            'card_number'    => $result->card_number,
-            'id_card'   => $result->id_card,
-            'card_number'  => $result->card_number,
-            'grade_work'     => $result->grade_work,
-            'llzs_score'     => $result->llzs_score,
-            'czjn_score'    => $result->czjn_score,
-            'results'   => $result->results,
-            'card_date'  => $result->card_date,
-            'company'     => $result->company,
-            'paragraph_number'     => $result->paragraph_number
+            'id' => $result->id,
+            'name' => $result->name,
+            'sex' => $result->sex,
+            'birthday' => $result->birthday,
+            'card_number' => $result->card_number,
+            'id_card' => $result->id_card,
+            'grade_work' => $result->grade_work,
+            'llzs_score' => $result->llzs_score,
+            'czjn_score' => $result->czjn_score,
+            'results' => $result->results,
+            'card_date' => $result->card_date,
+            'company' => $result->company,
+            'paragraph_number' => $result->paragraph_number
         ];
         return $detail;
     }
@@ -110,11 +108,12 @@ class BookService
     /**
      * checkByCardNumber
      * @param int $idCard
+     * @param int $idCard
      * @return array
      * @user tiejun
      * @time 2019/11/24 下午3:22
      */
-    public function checkByCardNumber(int $idCard,int $bookId = 0): array
+    public function checkByCardNumber(String $idCard, int $bookId = 0): array
     {
         $query = CrmBookModel::query();
         $query->where('id_card', '=', $idCard);
@@ -127,19 +126,19 @@ class BookService
             return [];
         }
         $detail = [
-            'id_card'    => $result->id_card
+            'id_card' => $result->id_card
         ];
         return $detail;
     }
 
     /**
      * getBookByCardNumber
-     * @param int $idCard
+     * @param String $idCard
      * @return array
      * @user tiejun
      * @time 2019/11/24 下午3:22
      */
-    public function getBookByCardNumber(int $idCard): array
+    public function getBookByCardNumber(String $idCard): array
     {
         $result = CrmBookModel::query()
             ->where('id_card', '=', $idCard)
@@ -148,20 +147,19 @@ class BookService
             return [];
         }
         $detail = [
-            'id'        => $result->id,
-            'name'  => $result->name,
-            'sex'     => $result->sex,
-            'birthday'     => $result->birthday?date("Y 年 m 月 d 日",strtotime($result->birthday)):'',
-            'card_number'    => $result->card_number,
-            'id_card'   => $result->id_card,
-            'card_number'  => $result->card_number,
-            'grade_work'     => $result->grade_work,
-            'llzs_score'     => $result->llzs_score,
-            'czjn_score'    => $result->czjn_score,
-            'results'   => $result->results,
-            'card_date'  => $result->card_date,
-            'company'     => $result->company,
-            'paragraph_number'     => $result->paragraph_number
+            'id' => $result->id,
+            'name' => $result->name,
+            'sex' => $result->sex,
+            'birthday' => $result->birthday ? date("Y 年 m 月 d 日", strtotime($result->birthday)) : '',
+            'card_number' => $result->card_number,
+            'id_card' => $result->id_card,
+            'grade_work' => $result->grade_work,
+            'llzs_score' => $result->llzs_score,
+            'czjn_score' => $result->czjn_score,
+            'results' => $result->results,
+            'card_date' => $result->card_date,
+            'company' => $result->company,
+            'paragraph_number' => $result->paragraph_number
         ];
         return $detail;
     }
