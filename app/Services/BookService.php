@@ -138,11 +138,13 @@ class BookService
      * @user tiejun
      * @time 2019/11/24 下午3:22
      */
-    public function getBookByCardNumber(String $idCard): array
+    public function getBookByCardNumber(String $idCard, int $bookId = 0): array
     {
-        $result = CrmBookModel::query()
-            ->where('id_card', '=', $idCard)
-            ->first();
+        $query = CrmBookModel::query();
+        if ($bookId != 0) {
+            $query = $query->where("id", "<>", $bookId);
+        }
+        $result = $query->where('id_card', '=', $idCard)->first();
         if (empty($result)) {
             return [];
         }
